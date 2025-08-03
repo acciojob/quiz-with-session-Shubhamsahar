@@ -76,12 +76,11 @@ submitButton.addEventListener("click", () => {
             score++;
         }
     }
-    scoreElement.textContent = `Your score is ${score} out of ${questions.length}`;
+    scoreElement.textContent = `Your score is ${score} out of ${questions.length}.`;
     localStorage.setItem("score", score);
 });
 
 const storedScore = localStorage.getItem("score");
 if (storedScore) {
-    scoreElement.textContent = `Your score is ${storedScore} out of ${questions.length}`;
+    scoreElement.textContent = `Your score is ${storedScore} out of ${questions.length}.`;
 }
-
