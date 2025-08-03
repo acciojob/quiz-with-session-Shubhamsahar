@@ -54,3 +54,22 @@ function renderQuestions() {
   }
 }
 renderQuestions();
+
+
+submitButton.addEventListener("click", () => {
+    let score = 0;
+    for (let i = 0; i < questions.length; i++) {
+        if (userAnswers[i] === questions[i].answer) {
+            score++;
+        }
+    }
+    scoreElement.textContent = `Your score is ${score} out of ${questions.length}`;
+    localStorage.setItem("score", score);
+});
+
+const storedScore = localStorage.getItem("score");
+if (storedScore) {
+    scoreElement.textContent = `Your score is ${storedScore} out of ${questions.length}`;
+}
+
+
