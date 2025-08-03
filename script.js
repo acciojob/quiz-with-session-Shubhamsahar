@@ -35,6 +35,10 @@ let userAnswers = new Array(questions.length).fill(null);
 // Display the quiz questions and choices
 function renderQuestions() {
     questionsElement.innerHTML = "";
+    const storedProgress = sessionStorage.getItem("progress");
+    if (storedProgress) {
+        userAnswers = JSON.parse(storedProgress);
+    }
     for (let i = 0; i < questions.length; i++) {
         const question = questions[i];
         const questionElement = document.createElement("div");
@@ -61,12 +65,6 @@ function renderQuestions() {
         }
         questionsElement.appendChild(questionElement);
     }
-
-    const storedProgress = sessionStorage.getItem("progress");
-    if (storedProgress) {
-        userAnswers = JSON.parse(storedProgress);
-        renderQuestions();
-    }
 }
 
 renderQuestions();
@@ -86,3 +84,4 @@ const storedScore = localStorage.getItem("score");
 if (storedScore) {
     scoreElement.textContent = `Your score is ${storedScore} out of ${questions.length}`;
 }
+
